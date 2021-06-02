@@ -19,6 +19,7 @@ class RestaurantServiceTest {
     }
 
     //>>>>>>>>>>>>>>>>>>>>>>SEARCHING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
     @Test
     public void searching_for_existing_restaurant_should_return_expected_restaurant_object() throws restaurantNotFoundException {
         //WRITE UNIT TEST CASE HERE
@@ -68,7 +69,6 @@ class RestaurantServiceTest {
 
         assertThrows(restaurantNotFoundException.class,()->service.removeRestaurant("Pantry d'or"));
     }
-
     @Test
     public void add_restaurant_should_increase_list_of_restaurants_size_by_1(){
         LocalTime openingTime = LocalTime.parse("10:30:00");
