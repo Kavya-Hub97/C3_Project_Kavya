@@ -89,8 +89,8 @@ class RestaurantTest {
         restaurant.addToMenu("Vegetable lasagne", 269);
         restaurant.addToMenu("Sizzling Brownie", 319);
         List<String> itemNames=new ArrayList<String>();
-        itemNames.add("Sweet Corn Soup");
-        itemNames.add("Vegetable Lasagne");
+        itemNames.add("Sweet corn soup");
+        itemNames.add("Vegetable lasagne");
         assertEquals(restaurant.getOrderValue(itemNames),388);
     }
 

@@ -19,30 +19,32 @@ public class Restaurant {
 
     public boolean isRestaurantOpen() {
         LocalTime current = getCurrentTime();
-        if(openingTime.isBefore(current) && closingTime.isAfter( current)){
+        if (openingTime.isBefore(current) && closingTime.isAfter(current)) {
             return true;
         }
         return false;
     }
 
-    public LocalTime getCurrentTime(){ return  LocalTime.now(); }
+    public LocalTime getCurrentTime() {
+        return LocalTime.now();
+    }
 
 
     public List<Item> getMenu() {
-       return menu;
+        return menu;
     }
 
-        private Item findItemByName(String itemName){
-        for(Item item: menu) {
-            if(item.getName().equals(itemName))
+    private Item findItemByName(String itemName) {
+        for (Item item : menu) {
+            if (item.getName().equals(itemName))
                 return item;
         }
         return null;
     }
 
     public void addToMenu(String name, int price) {
-        Item newItem = new Item(name,price);
-
+        Item newItem = new Item(name, price);
+        menu.add(newItem);
     }
 
     public void removeFromMenu(String itemName) throws itemNotFoundException {
@@ -53,19 +55,27 @@ public class Restaurant {
 
         menu.remove(itemToBeRemoved);
     }
-    public void displayDetails(){
-        System.out.println("Restaurant:"+ name + "\n"
-                +"Location:"+ location + "\n"
-                +"Opening time:"+ openingTime +"\n"
-                +"Closing time:"+ closingTime +"\n"
-                +"Menu:"+"\n"+getMenu());
+
+    public void displayDetails() {
+        System.out.println("Restaurant:" + name + "\n"
+                + "Location:" + location + "\n"
+                + "Opening time:" + openingTime + "\n"
+                + "Closing time:" + closingTime + "\n"
+                + "Menu:" + "\n" + getMenu());
 
     }
 
     public String getName() {
         return name;
     }
-    public int getOrderValue(List<String> itemNames){
-        return 0;
+
+    public int getOrderValue(List<String> itemNames) {
+        int totalValue = 0;
+        for (String itemName : itemNames) {
+            Item item = findItemByName(itemName);
+            totalValue = totalValue + item.getPrice();
+
+        }
+        return totalValue;
     }
 }
